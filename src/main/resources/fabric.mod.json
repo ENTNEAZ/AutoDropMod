@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "autodrop",
+  "version": "1.0.0",
+
+  "name": "Autodrop",
+  "description": "处理袭击塔产物",
+  "authors": [
+    "NaCl_Dragon"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "CC-BY-NC-SA",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "xyz.nacldragon.autodrop.AutoDrop"
+    ]
+  },
+  "mixins": [
+    "autodrop.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
