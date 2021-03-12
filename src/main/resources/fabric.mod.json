@@ -4,7 +4,7 @@
   "version": "1.0.0",
 
   "name": "Autodrop",
-  "description": "处理袭击塔产物",
+  "description": "handle raid farm chests",
   "authors": [
     "NaCl_Dragon"
   ],
@@ -13,7 +13,7 @@
     "sources": ""
   },
 
-  "license": "CC-BY-NC-SA",
+  "license": "CC0",
   "icon": "assets/modid/icon.png",
 
   "environment": "*",
