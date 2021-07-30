@@ -1,60 +1,52 @@
 package xyz.nacldragon.autodrop.mixin;
 
 
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 
-import net.minecraft.client.gui.screen.ingame.GenericContainerScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.screen.ingame.ScreenHandlerProvider;
+import net.minecraft.client.gui.screen.ingame.ShulkerBoxScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.screen.GenericContainerScreenHandler;
+import net.minecraft.screen.ShulkerBoxScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 
-@Mixin(GenericContainerScreen.class)
-public abstract class ChestScreenMixin
-	extends HandledScreen<GenericContainerScreenHandler>
-	implements ScreenHandlerProvider<GenericContainerScreenHandler>
+@Mixin(ShulkerBoxScreen.class)
+public abstract class ShulkerBoxScreenMixin
+	extends HandledScreen<ShulkerBoxScreenHandler>
+	implements ScreenHandlerProvider<ShulkerBoxScreenHandler>
 {
+	private final int rows = 3;
     private int mode;
-    
-	@Shadow
-	@Final
-	private int rows;
-	
-	
-	
-	public ChestScreenMixin(
-		GenericContainerScreenHandler container,
-		PlayerInventory playerInventory, Text name)
+	public ShulkerBoxScreenMixin(
+		ShulkerBoxScreenHandler container, PlayerInventory playerInventory,
+		Text name)
 	{
 		super(container, playerInventory, name);
 	}
-	
 	@Override
 	protected void init()
 	{
 		super.init();
 
-            addDrawableChild(new ButtonWidget(x + backgroundWidth - 171, y + 4, 25, 12,
-				new LiteralText("All"), b -> dropAll()));
-			
-            addDrawableChild(new ButtonWidget(x + backgroundWidth - 141, y + 4, 25, 12,
-				new LiteralText("Tot"), b -> dropTotem()));
-
-            addDrawableChild(new ButtonWidget(x + backgroundWidth - 111, y + 4, 25, 12,
-				new LiteralText("Sad"), b -> dropSaddle()));
-
-            addDrawableChild(new ButtonWidget(x + backgroundWidth - 81, y + 4, 25, 12,
-				new LiteralText("Oth"), b -> dropOther()));
 		
+        addDrawableChild(new ButtonWidget(x + backgroundWidth - 171, y + 4, 25, 12,
+        new LiteralText("All"), b -> dropAll()));
+    
+        addDrawableChild(new ButtonWidget(x + backgroundWidth - 141, y + 4, 25, 12,
+        new LiteralText("Tot"), b -> dropTotem()));
+
+        addDrawableChild(new ButtonWidget(x + backgroundWidth - 111, y + 4, 25, 12,
+        new LiteralText("Sad"), b -> dropSaddle()));
+
+        addDrawableChild(new ButtonWidget(x + backgroundWidth - 81, y + 4, 25, 12,
+        new LiteralText("Oth"), b -> dropOther()));
 
 	}
+	
 	
 	private void dropOther() {
         runInThread(() -> choosedDrop(2));

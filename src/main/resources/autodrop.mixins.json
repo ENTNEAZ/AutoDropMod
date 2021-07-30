@@ -2,12 +2,13 @@
   "required": true,
   "minVersion": "0.8",
   "package": "xyz.nacldragon.autodrop.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_16",
   "mixins": [
     
   ],
   "client": [
-    "ChestScreenMixin"
+    "ChestScreenMixin",
+    "ShulkerBoxScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
